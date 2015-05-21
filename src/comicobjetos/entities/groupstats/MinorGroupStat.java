@@ -8,8 +8,6 @@ import java.util.List;
 public class MinorGroupStat extends GroupStatCalculator
 {
     
-
-
     @Override
     public float calculate(List<Float> elements) {
         float min= Float.MAX_VALUE;

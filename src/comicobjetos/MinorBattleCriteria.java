@@ -5,7 +5,10 @@ import comicobjetos.entities.ComicElement;
 
 public class MinorBattleCriteria extends BattleCriteria
 {
-
+    
+    public MinorBattleCriteria(String stat){
+        super(stat);
+    }
 
     @Override
     public ComicElement battle(ComicElement char1, ComicElement char2) {

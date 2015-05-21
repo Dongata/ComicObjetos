@@ -4,14 +4,19 @@ import java.util.List;
 
 
 public class Arena{
-	private List<BattleCriteria> criterias;
-	private ComicElement opponent1;
+    private List<BattleCriteria> criterias;
+    private ComicElement opponent1;
 
-	private ComicElement opponent2;
+    private ComicElement opponent2;
 
-	public List<ComicElement> battle(){
-		return null;
-	}
-
+    public ComicElement battle(){
+        ComicElement winner=null;
+        for (BattleCriteria battle: criterias){
+            winner = battle.battle(opponent1, opponent2);
+            if (winner != null)
+                return winner;
+        }
+        return null;
+    }
 }
 

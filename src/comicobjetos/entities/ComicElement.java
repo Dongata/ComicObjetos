@@ -15,6 +15,12 @@ public abstract class ComicElement
             return alias;
         }
 	public abstract float getStat(String name);
-
+        @Override
+        public boolean equals(Object o){
+            ComicElement ce = (ComicElement)o;
+            if(this.getAlias().equals(ce.getAlias()))
+                return true;
+            return false;
+        }
 }
 
