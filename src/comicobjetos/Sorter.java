@@ -1,6 +1,7 @@
 package comicobjetos;
 
 import comicobjetos.entities.ComicElement;
+import java.util.ArrayList;
 import java.util.List;
 import sun.misc.Compare;
 import sun.misc.Sort;
@@ -8,7 +9,7 @@ import sun.misc.Sort;
 
 public class Sorter
 {
-    private List<BattleCriteria> criterias;
+    private List<BattleCriteria> criterias = new ArrayList<>();
 
     public List<ComicElement> sort(List<ComicElement> elements){
 

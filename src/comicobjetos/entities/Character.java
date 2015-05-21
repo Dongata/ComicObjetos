@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class Character extends ComicElement{
     private String name;
-    private HashMap<String, Stat> stats;
+    private HashMap<String, Stat> stats =  new HashMap<>();
 
     public final static float DEFAULT_VALUE=0;
 
@@ -15,12 +15,18 @@ public class Character extends ComicElement{
         super(alias);
     }
     
+    public Character(String alias, String name){
+        super(alias);
+        this.name = name;
+    }
+    
     public void addStat(String statName, Stat stat){
         stats.put(statName, stat);
     }
     
     public void addStat(String statName, float statValue){
-        stats.put(statName, new SimpleStat(statValue));
+        Stat aux =new SimpleStat(statValue);
+        stats.put(statName, aux);
     }
     
     @Override
@@ -28,6 +34,12 @@ public class Character extends ComicElement{
         if(stats.containsKey(name))
             return stats.get(name).getValue();
         return DEFAULT_VALUE;
+    }
+    
+    public Stat getRealStat(String name){
+        if(stats.containsKey(name))
+            return stats.get(name);
+        return new SimpleStat(DEFAULT_VALUE);
     }
 
 }

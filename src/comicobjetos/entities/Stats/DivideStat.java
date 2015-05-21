@@ -8,7 +8,9 @@ public class DivideStat extends CompoundStat
     @Override
     public float getValue()
     {
-            return stat1.getValue()/stat2.getValue();
+        if (stat2.getValue() != 0)
+            return (stat1.getValue()/stat2.getValue());
+        else return 0;
     }
 
 }

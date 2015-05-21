@@ -9,10 +9,9 @@ import java.util.List;
 
 public class Group extends ComicElement
 {
-    private List<ComicElement> elements;
+    private List<ComicElement> elements = new ArrayList<>();
     private GroupStatCalculator defaultCalculation =  new GreaterGroupStat();
-    private Hashtable<String,GroupStatCalculator> statsCalculator;
-    
+    private Hashtable<String,GroupStatCalculator> statsCalculator = new Hashtable<>();
     public Group(String alias){
         super(alias);
     }
@@ -29,6 +28,10 @@ public class Group extends ComicElement
             if(c.getAlias().equals(alias)) return c;
         }
         return null;
+    }
+    
+    public void setDefaultCalculation(GroupStatCalculator gsc){
+        this.defaultCalculation=gsc;
     }
     
     @Override
