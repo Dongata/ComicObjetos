@@ -157,6 +157,8 @@ public class ComicObjetos {
         System.out.println(metropolis.battle().getAlias());
         
         
+        Sorter sorter =  new Sorter();
+        
         
                 
     }
