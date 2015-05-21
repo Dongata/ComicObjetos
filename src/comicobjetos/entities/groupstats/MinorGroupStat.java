@@ -12,7 +12,11 @@ public class MinorGroupStat extends GroupStatCalculator
 
     @Override
     public float calculate(List<Float> elements) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        float min= Float.MAX_VALUE;
+        for (float ce: elements)
+            if (ce<min)
+                min=ce;
+        return min;
     }
 
 }

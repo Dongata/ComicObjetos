@@ -6,7 +6,10 @@ import java.util.List;
 public class SimpleGroupStat extends GroupStatCalculator
 {
     private float value;
-    int caro;
+    
+    public SimpleGroupStat(float value){
+        this.value = value;
+    }
 
     @Override
     public float calculate(List<Float> elements) {

@@ -10,7 +10,11 @@ public class GreaterGroupStat extends GroupStatCalculator
 
     @Override
     public float calculate(List<Float> elements) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        float max= 0;
+        for (float ce: elements)
+            if (ce>max)
+                max=ce;
+        return max;
     }
 
 }

@@ -12,7 +12,7 @@ public class Character extends ComicElement{
     public final static float DEFAULT_VALUE=0;
 
     public Character(String alias){
-        this.alias=alias;
+        super(alias);
     }
     
     public void addStat(String statName, Stat stat){

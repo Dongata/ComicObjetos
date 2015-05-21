@@ -13,6 +13,10 @@ public class Group extends ComicElement
     private GroupStatCalculator defaultCalculation =  new GreaterGroupStat();
     private Hashtable<String,GroupStatCalculator> statsCalculator;
     
+    public Group(String alias){
+        super(alias);
+    }
+    
     public void addComicElement(ComicElement ce){
         elements.add(ce);
     }
