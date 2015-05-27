@@ -21,6 +21,6 @@ public abstract class ComicElement
             if(this.getAlias().equals(ce.getAlias()))
                 return true;
             return false;
-        }
+        }   
 }
 

@@ -13,6 +13,8 @@ import comicobjetos.entities.groupstats.AverageGroupStat;
 import comicobjetos.entities.groupstats.GreaterGroupStat;
 import comicobjetos.entities.groupstats.MinorGroupStat;
 import comicobjetos.entities.groupstats.SumGroupStat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -156,10 +158,43 @@ public class ComicObjetos {
         metropolis.addCriteria(new GreaterBattleCriteria("fuerza"));
         System.out.println(metropolis.battle().getAlias());
         
+        /////////////////////////////////////////////////////////////////
         
-        Sorter sorter =  new Sorter();
+        ArrayList<ComicElement> grupos = new ArrayList<ComicElement>(11);
+        grupos.add(flash);
+        grupos.add(capitanFrio);
+        grupos.add(superman);
+        grupos.add(batman);
+        grupos.add(robin);
+        grupos.add(guason);
+        grupos.add(lexLuthor);
+        grupos.add(gatubela);
+        grupos.add(duoDinamico);
+        grupos.add(ligaJusticia);
+        grupos.add(ligaInjusticia);
+        
+        Sorter ordenamiento = new Sorter();
+        
+        System.out.println("Lista desordenada:");
+        for (int i=0; i<grupos.size(); i++){
+            System.out.print(grupos.get(i).getAlias() + " - ");
+        }
+        System.out.println(grupos.size());
+        
+        ordenamiento.addCriteria(new GreaterBattleCriteria("inteligencia"));
+        //ordenamiento.addCriteria(new GreaterBattleCriteria("velocidad"));
+        //ordenamiento.addCriteria(new GreaterBattleCriteria("fuerza"));
+        
+        ArrayList<ComicElement> gruposOrdenados = new ArrayList<ComicElement>();
+        gruposOrdenados = ordenamiento.sort(grupos);
         
         
-                
+        System.out.println("Lista ordenada por inteligencia/velocidad/fuerza:");
+        for (int i=0; i<gruposOrdenados.size(); i++){
+            System.out.print(gruposOrdenados.get(i).getAlias() + " - ");
+        }
+        System.out.println(gruposOrdenados.size());
+        
+        
     }
 }
