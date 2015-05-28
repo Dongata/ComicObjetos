@@ -71,7 +71,7 @@ public class ComicObjetos {
         robin.addStat("altura", 1.75f);
         robin.addStat("peso", 65);
         robin.addStat("fuerza", 710);
-        robin.addStat("velocidad", 160);
+        robin.addStat("velocidad", 60);
         robin.addStat("inteligencia", 100);
         robin.addStat("resistencia al fuego", new GreaterStat(robin.getRealStat("velocidad"), val100, robin.getRealStat("velocidad"), val1));
         robin.addStat("masa corporal", new DivideStat(robin.getRealStat("altura"), robin.getRealStat("peso")));
@@ -124,7 +124,7 @@ public class ComicObjetos {
         ligaJusticia.addComicElement(superman);
         ligaJusticia.addComicElement(flash);
         
-        ligaJusticia.addStatCalculator("fuerza", new SumGroupStat());
+        ligaJusticia.addStatCalculator("fuerza", new AverageGroupStat());
         ligaJusticia.addStatCalculator("velocidad", new MinorGroupStat());
         ligaJusticia.addStatCalculator("inteligencia", new GreaterGroupStat());
         ligaJusticia.setDefaultCalculation(new SumGroupStat());
@@ -173,28 +173,33 @@ public class ComicObjetos {
         grupos.add(ligaJusticia);
         grupos.add(ligaInjusticia);
         
-        Sorter ordenamiento = new Sorter();
+        Sorter ordenamiento1 = new Sorter();
+        ordenamiento1.addCriteria(new MinorBattleCriteria("velocidad"));
+        
+        ArrayList<ComicElement> gruposOrdenados1 = new ArrayList<ComicElement>();
+        gruposOrdenados1 = ordenamiento1.sort(grupos);
+        
+        Sorter ordenamiento2 = new Sorter();
+        ordenamiento2.addCriteria(new MinorBattleCriteria("maldad"));
+        ordenamiento2.addCriteria(new GreaterBattleCriteria("fuerza"));
+        
+        ArrayList<ComicElement> gruposOrdenados2 = new ArrayList<ComicElement>();
+        gruposOrdenados2 = ordenamiento2.sort(grupos);
         
         System.out.println("Lista desordenada:");
         for (int i=0; i<grupos.size(); i++){
             System.out.print(grupos.get(i).getAlias() + " - ");
         }
-        System.out.println(grupos.size());
-        
-        ordenamiento.addCriteria(new GreaterBattleCriteria("inteligencia"));
-        //ordenamiento.addCriteria(new GreaterBattleCriteria("velocidad"));
-        //ordenamiento.addCriteria(new GreaterBattleCriteria("fuerza"));
-        
-        ArrayList<ComicElement> gruposOrdenados = new ArrayList<ComicElement>();
-        gruposOrdenados = ordenamiento.sort(grupos);
-        
-        
-        System.out.println("Lista ordenada por inteligencia/velocidad/fuerza:");
-        for (int i=0; i<gruposOrdenados.size(); i++){
-            System.out.print(gruposOrdenados.get(i).getAlias() + " - ");
+        System.out.println("");
+        System.out.println("Lista ordenada por velocidad descendente:");
+        for (int i=0; i<gruposOrdenados1.size(); i++){
+            System.out.print(gruposOrdenados1.get(i).getAlias() + " - ");
         }
-        System.out.println(gruposOrdenados.size());
-        
-        
+        System.out.println("");
+        System.out.println("Lista ordenada por maldad descendente / fuerza ascendente:");
+        for (int i=0; i<gruposOrdenados2.size(); i++){
+            System.out.print(gruposOrdenados2.get(i).getAlias() + " - ");
+        }
+
     }
 }

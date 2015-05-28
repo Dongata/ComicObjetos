@@ -18,22 +18,32 @@ public class Sorter
         orderedList.add(0, elements.get(0));
         ComicElement best = null;
         int k = 0;
+        int j = 0;
         for (int i=1; i<elements.size(); i++){
-            System.out.println("lelele");
-                
-            for (int j=0; j<orderedList.size(); j++){
+            while (j<orderedList.size()){          
                 while ((k<criterias.size()) && (best == null)){
                     best = criterias.get(k).battle(elements.get(i), orderedList.get(j));
                     k++;
-                    System.out.println("1");
                 }
-                System.out.println("2");
-                if ((best == null)||(best == elements.get(i))){
+                if (best == null){
                     orderedList.add(j,elements.get(i));
+                    j = orderedList.size();
+                }
+                else if (best == orderedList.get(j)){
+                    orderedList.add(j,elements.get(i));
+                    j = orderedList.size();
+                }
+                else if (best == elements.get(i)){
+                    j++;
+                    if (j == orderedList.size()){
+                        orderedList.add(j,elements.get(i));
+                        j++;
+                    }
                 }
                 k = 0;
                 best = null;
             }
+            j = 0;
         }
         return orderedList;
     }
