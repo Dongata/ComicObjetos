@@ -12,8 +12,21 @@ public class Sorter
     public void addCriteria(BattleCriteria criteria){
         criterias.add(criteria);
     }
+    
+    public List<ComicElement> bestOf(List<ComicElement> players){
+        List <ComicElement> ord = new ArrayList<>();
+        ord = sort(players);
+        List <ComicElement> winners = new ArrayList<>();
+        winners.add(ord.get(0));
+        for (int i=1; i<ord.size(); i++){
+            if (ord.get(0).getStat(criterias.get(0).getNameStat()) == ord.get(i).getStat(criterias.get(0).getNameStat()))
+                winners.add(ord.get(i));
+            else return winners;
+        }
+        return null;
+    }
 
-    public ArrayList<ComicElement> sort(List<ComicElement> elements){
+    public List<ComicElement> sort(List<ComicElement> elements){
         ArrayList<ComicElement> orderedList = new ArrayList<>(elements.size());
         orderedList.add(0, elements.get(0));
         ComicElement best = null;

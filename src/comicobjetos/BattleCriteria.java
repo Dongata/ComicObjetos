@@ -8,6 +8,10 @@ public abstract class BattleCriteria{
     public BattleCriteria(String stat){
         this.stat = stat;
     }
+    
+    public String getNameStat(){
+        return stat;
+    }
 
     public abstract ComicElement battle(ComicElement char1, ComicElement char2);
 

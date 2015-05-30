@@ -176,30 +176,44 @@ public class ComicObjetos {
         Sorter ordenamiento1 = new Sorter();
         ordenamiento1.addCriteria(new MinorBattleCriteria("velocidad"));
         
-        ArrayList<ComicElement> gruposOrdenados1 = new ArrayList<ComicElement>();
+        List<ComicElement> gruposOrdenados1 = new ArrayList<ComicElement>();
         gruposOrdenados1 = ordenamiento1.sort(grupos);
         
         Sorter ordenamiento2 = new Sorter();
         ordenamiento2.addCriteria(new MinorBattleCriteria("maldad"));
         ordenamiento2.addCriteria(new GreaterBattleCriteria("fuerza"));
         
-        ArrayList<ComicElement> gruposOrdenados2 = new ArrayList<ComicElement>();
+        List<ComicElement> gruposOrdenados2 = new ArrayList<ComicElement>();
         gruposOrdenados2 = ordenamiento2.sort(grupos);
         
         System.out.println("Lista desordenada:");
-        for (int i=0; i<grupos.size(); i++){
-            System.out.print(grupos.get(i).getAlias() + " - ");
-        }
-        System.out.println("");
+        imprimir(grupos);
         System.out.println("Lista ordenada por velocidad descendente:");
-        for (int i=0; i<gruposOrdenados1.size(); i++){
-            System.out.print(gruposOrdenados1.get(i).getAlias() + " - ");
+        imprimir(gruposOrdenados1);
+        System.out.println("Lista ordenada por maldad descendente / fuerza ascendente:");
+        imprimir(gruposOrdenados2);
+        
+        
+        System.out.println("Mejores de las listas:");
+        List<ComicElement> ganadores1 = new ArrayList<>();
+        ganadores1 = ordenamiento1.bestOf(grupos);
+        imprimir(ganadores1);
+        List<ComicElement> ganadores2 = new ArrayList<>();
+        ganadores2 = ordenamiento2.bestOf(grupos);
+        imprimir(ganadores2);
+        
+        Sorter ordenamiento3 = new Sorter();
+        ordenamiento3.addCriteria(new MinorBattleCriteria("inteligencia"));
+        List<ComicElement> ganadores3 = new ArrayList<>();
+        ganadores3 = ordenamiento3.bestOf(grupos);
+        imprimir(ganadores3);
+        
+    }
+    
+    public static void imprimir(List<ComicElement> lista){
+        for (ComicElement lista1 : lista) {
+            System.out.print(lista1.getAlias() + " - ");
         }
         System.out.println("");
-        System.out.println("Lista ordenada por maldad descendente / fuerza ascendente:");
-        for (int i=0; i<gruposOrdenados2.size(); i++){
-            System.out.print(gruposOrdenados2.get(i).getAlias() + " - ");
-        }
-
     }
 }
