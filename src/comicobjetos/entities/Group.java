@@ -3,15 +3,17 @@ package comicobjetos.entities;
 import comicobjetos.entities.groupstats.GreaterGroupStat;
 import comicobjetos.entities.groupstats.GroupStatCalculator;
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class Group extends ComicElement
 {
-    private List<ComicElement> elements = new ArrayList<>();
+    private final List<ComicElement> elements = new ArrayList<>();
     private GroupStatCalculator defaultCalculation =  new GreaterGroupStat();
-    private Hashtable<String,GroupStatCalculator> statsCalculator = new Hashtable<>();
+    private final Map<String,GroupStatCalculator> statsCalculator = new HashMap<>();
+    
     public Group(String alias){
         super(alias);
     }

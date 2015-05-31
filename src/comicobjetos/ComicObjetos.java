@@ -160,7 +160,7 @@ public class ComicObjetos {
         
         /////////////////////////////////////////////////////////////////
         
-        ArrayList<ComicElement> grupos = new ArrayList<ComicElement>(11);
+        ArrayList<ComicElement> grupos = new ArrayList<>(11);
         grupos.add(flash);
         grupos.add(capitanFrio);
         grupos.add(superman);
@@ -176,7 +176,7 @@ public class ComicObjetos {
         Sorter ordenamiento1 = new Sorter();
         ordenamiento1.addCriteria(new MinorBattleCriteria("velocidad"));
         
-        List<ComicElement> gruposOrdenados1 = new ArrayList<ComicElement>();
+        List<ComicElement> gruposOrdenados1 = new ArrayList<>();
         gruposOrdenados1 = ordenamiento1.sort(grupos);
         
         Sorter ordenamiento2 = new Sorter();
