@@ -180,17 +180,18 @@ public class ComicObjetos {
         List<ComicElement> mejores1 = new ArrayList<>();
         List<ComicElement> mejores2 = new ArrayList<>();
         List<ComicElement> mejores3 = new ArrayList<>();
+        List<ComicElement> mejores4 = new ArrayList<>();
         
         arena.clearCriterias();
         arena.addCriteria(new MinorBattleCriteria("velocidad"));
         arenaOrdenada1 = arena.sort();
-        mejores1 = arena.bestOf();
+        mejores1 = arena.battle();
         
         arena.clearCriterias();
         arena.addCriteria(new GreaterBattleCriteria("fuerza"));
         arena.addCriteria(new MinorBattleCriteria("maldad"));
         arenaOrdenada2 = arena.sort();
-        mejores2 = arena.bestOf();
+        mejores2 = arena.battle();
              
         System.out.println("Lista desordenada:");
         imprimir(arena.getPlayers());
@@ -202,12 +203,18 @@ public class ComicObjetos {
         arena.clearCriterias();
 
         arena.addCriteria(new MinorBattleCriteria("inteligencia"));
-        mejores3 = arena.bestOf();
+        mejores3 = arena.battle();
+        
+        arena.clearCriterias();
+        arena.addCriteria(new GreaterBattleCriteria("velocidad"));
+        arena.addCriteria(new MinorBattleCriteria("inteligencia"));
+        mejores4 = arena.battle();
         
         System.out.println("Mejores: ");
         imprimir(mejores1);
         imprimir(mejores2);
         imprimir(mejores3);
+        imprimir(mejores4);
         
         
         ///////////////////////////////////////////////////////////////////////
@@ -231,8 +238,8 @@ public class ComicObjetos {
     }
     
     public static void imprimir(List<ComicElement> lista){
-        for (ComicElement lista1 : lista) {
-            System.out.print(lista1.getAlias() + " - ");
+        for (ComicElement ce : lista) {
+            System.out.print(ce.getAlias() + " - ");
         }
         System.out.println("");
     }

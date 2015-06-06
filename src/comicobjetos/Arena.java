@@ -60,7 +60,7 @@ public class Arena{
         ArrayList<ComicElement> orderedList = new ArrayList<>(players.size());
         orderedList.add(0, players.get(0));
         ComicElement best = null;
-        int k = 0, j = 0;
+        int j = 0;
         
         for (int i=1; i<players.size(); i++){
             while (j<orderedList.size()){          
@@ -76,7 +76,6 @@ public class Arena{
                         j++;
                     }
                 }
-                k = 0;
                 best = null;
             }
             j = 0;
@@ -84,13 +83,13 @@ public class Arena{
         return orderedList;
     }
     
-    public List<ComicElement> bestOf(){
+    public List<ComicElement> battle(){
         List <ComicElement> ord = new ArrayList<>();
         ord = sort();
         List <ComicElement> winners = new ArrayList<>();
         winners.add(ord.get(0));
         for (int i=1; i<ord.size(); i++){
-            if (ord.get(0).getStat(criterias.getNameStat()) == ord.get(i).getStat(criterias.getNameStat()))
+            if (criterias.battle(ord.get(0), ord.get(i))==null)
                 winners.add(ord.get(i));
             else return winners;
         }

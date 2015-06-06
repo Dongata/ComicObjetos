@@ -3,8 +3,8 @@ package comicobjetos;
 import comicobjetos.entities.ComicElement;
 
 
-public class MinorBattleCriteria extends BattleCriteria
-{
+public class MinorBattleCriteria extends BattleCriteria{
+    
     public MinorBattleCriteria(String stat) {
         super(stat);
     }

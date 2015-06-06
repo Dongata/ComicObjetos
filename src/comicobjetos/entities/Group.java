@@ -21,6 +21,7 @@ public class Group extends ComicElement
     public void addComicElement(ComicElement ce){
         elements.add(ce);
     }
+    
     public void addStatCalculator(String stat, GroupStatCalculator gsc){
         statsCalculator.put(stat, gsc);
     }

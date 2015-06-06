@@ -25,11 +25,6 @@ public class Character extends ComicElement{
         stats.put(statName, stat);
     }
     
-    /*public void addStat(String statName, float statValue){
-        Stat aux =new SimpleStat(statValue);
-        stats.put(statName, aux);
-    }*/
-    
     @Override
     public float getStat(String name){
         if(stats.containsKey(name))
@@ -44,4 +39,3 @@ public class Character extends ComicElement{
     }
 
 }
-
