@@ -26,6 +26,8 @@ public class ComicObjetos {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        
         SimpleStat val1= new SimpleStat(1);
         SimpleStat val100= new SimpleStat(100);
         
@@ -141,37 +143,41 @@ public class ComicObjetos {
         ligaInjusticia.addStatCalculator("maldad", new SumGroupStat());
         ligaInjusticia.setDefaultCalculation(new GreaterGroupStat());
         
-        Arena ciudadCentral = new Arena(flash, capitanFrio);
-        ciudadCentral.addCriteria(new GreaterBattleCriteria("fuerza"));
-        ciudadCentral.addCriteria(new GreaterBattleCriteria("velocidad"));
-        ciudadCentral.addCriteria(new GreaterBattleCriteria("maldad"));
-        System.out.println(ciudadCentral.battle().getAlias());
+        Arena arena = new Arena();
+        arena.addPlayer(flash);
+        arena.addPlayer(capitanFrio);
+        arena.addPlayer(superman);
+        arena.addPlayer(batman);
+        arena.addPlayer(robin);
+        arena.addPlayer(guason);
+        arena.addPlayer(lexLuthor);
+        arena.addPlayer(gatubela);
+        arena.addPlayer(duoDinamico);
+        arena.addPlayer(ligaJusticia);
+        arena.addPlayer(ligaInjusticia);
         
-        Arena ciudadGotica = new Arena(duoDinamico, guason);
-        ciudadGotica.addCriteria(new GreaterBattleCriteria("inteligencia"));
-        ciudadGotica.addCriteria(new MinorBattleCriteria("masa corporal"));
-        System.out.println(ciudadGotica.battle().getAlias());
+        arena.addCriteria(new GreaterBattleCriteria("maldad"));
+        arena.addCriteria(new GreaterBattleCriteria("velocidad"));
+        arena.addCriteria(new GreaterBattleCriteria("fuerza"));
+        System.out.println(arena.battle("flash", "capitan frio").getAlias());
         
-        Arena metropolis = new Arena(ligaJusticia, ligaInjusticia);
-        metropolis.addCriteria(new GreaterBattleCriteria("inteligencia"));
-        metropolis.addCriteria(new GreaterBattleCriteria("velocidad"));
-        metropolis.addCriteria(new GreaterBattleCriteria("fuerza"));
-        System.out.println(metropolis.battle().getAlias());
+        arena.clearCriterias();
+        
+        arena.addCriteria(new MinorBattleCriteria("masa corporal"));
+        arena.addCriteria(new GreaterBattleCriteria("inteligencia"));
+        System.out.println(arena.battle("duo dinamico", "guason").getAlias());
+        
+        arena.clearCriterias();
+        
+        arena.addCriteria(new GreaterBattleCriteria("fuerza"));
+        arena.addCriteria(new GreaterBattleCriteria("velocidad"));        
+        arena.addCriteria(new GreaterBattleCriteria("inteligencia"));
+        System.out.println(arena.battle("liga justicia", "liga injusticia").getAlias());
+        
         
         /////////////////////////////////////////////////////////////////
         
-        ArrayList<ComicElement> grupos = new ArrayList<>(11);
-        grupos.add(flash);
-        grupos.add(capitanFrio);
-        grupos.add(superman);
-        grupos.add(batman);
-        grupos.add(robin);
-        grupos.add(guason);
-        grupos.add(lexLuthor);
-        grupos.add(gatubela);
-        grupos.add(duoDinamico);
-        grupos.add(ligaJusticia);
-        grupos.add(ligaInjusticia);
+        /*ArrayList<ComicElement> grupos = new ArrayList<>(11);
         
         Sorter ordenamiento1 = new Sorter();
         ordenamiento1.addCriteria(new MinorBattleCriteria("velocidad"));
@@ -206,14 +212,31 @@ public class ComicObjetos {
         ordenamiento3.addCriteria(new MinorBattleCriteria("inteligencia"));
         List<ComicElement> ganadores3 = new ArrayList<>();
         ganadores3 = ordenamiento3.bestOf(grupos);
-        imprimir(ganadores3);
+        imprimir(ganadores3);*/
         
+                /*
+                run:
+                flash
+                duo dinamico
+                liga injusticia
+                Lista desordenada:
+                flash - capitan frio - superman - batman - robin - guason - lex luthor - gatubela - duo dinamico - liga justicia - liga injusticia - 
+                Lista ordenada por velocidad descendente:
+                flash - superman - gatubela - lex luthor - guason - robin - liga injusticia - capitan frio - liga justicia - duo dinamico - batman - 
+                Lista ordenada por maldad descendente / fuerza ascendente:
+                liga injusticia - guason - lex luthor - capitan frio - gatubela - robin - flash - batman - duo dinamico - liga justicia - superman - 
+                Mejores de las listas:
+                flash - 
+                liga injusticia - 
+                liga injusticia - liga justicia - duo dinamico - gatubela - guason - batman - 
+                */
     }
     
-    public static void imprimir(List<ComicElement> lista){
+    /*public static void imprimir(List<ComicElement> lista){
         for (ComicElement lista1 : lista) {
             System.out.print(lista1.getAlias() + " - ");
         }
         System.out.println("");
-    }
+    }*/
+        
 }
