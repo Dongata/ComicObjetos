@@ -1,4 +1,4 @@
-    package comicobjetos.entities;
+package comicobjetos.entities;
 
 
 
@@ -14,6 +14,7 @@ public abstract class ComicElement
         public String getAlias(){
             return alias;
         }
+        
 	public abstract float getStat(String name);
    
 }
