@@ -220,10 +220,12 @@ public class ComicObjetos {
     }
     
     public static void imprimir(List<ComicElement> lista){
-        for (ComicElement ce : lista) {
-            System.out.print(ce.getAlias() + " - ");
+        if(!lista.isEmpty()){
+            for (ComicElement ce : lista) {
+                System.out.print(ce.getAlias() + " - ");
+            }
+            System.out.println("");
         }
-        System.out.println("");
     }
         
 }

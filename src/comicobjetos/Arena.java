@@ -59,42 +59,44 @@ public class Arena{
     
     public List<ComicElement> sort(){
         ArrayList<ComicElement> orderedList = new ArrayList<>(players.size());
-        orderedList.add(0, players.get(0));
-        ComicElement best = null;
-        int j = 0;
-        
-        for (int i=1; i<players.size(); i++){
-            while (j<orderedList.size()){          
-                best = criterias.battle(players.get(i), orderedList.get(j));
-                if ((best == null) || (best == orderedList.get(j))){
-                    orderedList.add(j,players.get(i));
-                    j = orderedList.size();
-                }
-                else if (best == players.get(i)){
-                    j++;
-                    if (j == orderedList.size()){
+        if((!players.isEmpty())&&(criterias != null)){
+            orderedList.add(0, players.get(0));
+            ComicElement best = null;
+            int j = 0;
+            for (int i=1; i<players.size(); i++){
+                while (j<orderedList.size()){          
+                    best = criterias.battle(players.get(i), orderedList.get(j));
+                    if ((best == null) || (best == orderedList.get(j))){
                         orderedList.add(j,players.get(i));
-                        j++;
+                        j = orderedList.size();
                     }
+                    else if (best == players.get(i)){
+                        j++;
+                        if (j == orderedList.size()){
+                            orderedList.add(j,players.get(i));
+                            j++;
+                        }
+                    }
+                    best = null;
                 }
-                best = null;
+                j = 0;
             }
-            j = 0;
         }
         return orderedList;
     }
     
     public List<ComicElement> battle(){
-        List <ComicElement> ord = new ArrayList<>();
-        ord = sort();
+        List <ComicElement> ord = sort();
         List <ComicElement> winners = new ArrayList<>();
-        winners.add(ord.get(0));
-        for (int i=1; i<ord.size(); i++){
-            if (criterias.battle(ord.get(0), ord.get(i))==null)
-                winners.add(ord.get(i));
-            else return winners;
+        if((!ord.isEmpty())&&(criterias != null)){
+            winners.add(ord.get(0));
+            for (int i=1; i<ord.size(); i++){
+                if (criterias.battle(ord.get(0), ord.get(i))==null)
+                    winners.add(ord.get(i));
+                else return winners;
+            }
         }
-        return null;
+        return winners;
     }
     
 }
