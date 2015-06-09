@@ -50,10 +50,11 @@ public class Arena{
     }
     
     public ComicElement battle(String name1, String name2){
-        //null??
         ComicElement ce1 = getComicElement(name1);
         ComicElement ce2 = getComicElement(name2);
-        return criterias.battle(ce1, ce2);      
+        if ((ce1 != null) && (ce2 !=null))
+            return criterias.battle(ce1, ce2);
+        return null;
     }
     
     public List<ComicElement> sort(){

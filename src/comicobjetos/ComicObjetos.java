@@ -217,24 +217,6 @@ public class ComicObjetos {
         imprimir(mejores4);
         
         
-        ///////////////////////////////////////////////////////////////////////
-        /*
-        primeras ejecuciones:
-        run:
-        flash
-        duo dinamico
-        liga injusticia
-        Lista desordenada:
-        flash - capitan frio - superman - batman - robin - guason - lex luthor - gatubela - duo dinamico - liga justicia - liga injusticia - 
-        Lista ordenada por velocidad descendente:
-        flash - superman - gatubela - lex luthor - guason - robin - liga injusticia - capitan frio - liga justicia - duo dinamico - batman - 
-        Lista ordenada por maldad descendente / fuerza ascendente:
-        liga injusticia - guason - lex luthor - capitan frio - gatubela - robin - flash - batman - duo dinamico - liga justicia - superman - 
-        Mejores de las listas:
-        flash - (velocidad)
-        liga injusticia - (maldad/fuerza)
-        liga injusticia - liga justicia - duo dinamico - gatubela - guason - batman - (inteligencia)
-        */
     }
     
     public static void imprimir(List<ComicElement> lista){
