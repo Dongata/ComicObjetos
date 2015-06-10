@@ -5,34 +5,19 @@ import java.util.List;
 
 
 public class Arena{
-    private BattleCriteria criterias;
     private List<ComicElement> players = new ArrayList<>();
 
     public Arena() {
     }
     
-    public Arena(BattleCriteria criterias, List<ComicElement> players) {
-        this.criterias = criterias;
+    public Arena(List<ComicElement> players) {
         this.players = players;
-    }
-
-    public void setCriterias(BattleCriteria criterias) {
-        this.criterias = criterias;
     }
 
     public void setPlayers(List<ComicElement> players) {
         this.players = players;
     }
-     
-    public void addCriteria(BattleCriteria criteria){
-        criteria.setNext(criterias);
-        criterias = criteria;
-    }
-    
-    public void clearCriterias(){
-        criterias = null;
-    }
-    
+
     public void addPlayer(ComicElement player){
         players.add(player);
     }
@@ -45,15 +30,13 @@ public class Arena{
         return null;
     }
     
-    public ComicElement battle(String name1, String name2){
-        ComicElement ce1 = getComicElement(name1);
-        ComicElement ce2 = getComicElement(name2);
+    public ComicElement battle(ComicElement ce1, ComicElement ce2, BattleCriteria criterias){
         if ((ce1 != null) && (ce2 !=null))
             return criterias.battle(ce1, ce2);
         return null;
     }
     
-    public List<ComicElement> sort(){
+    public List<ComicElement> sort(BattleCriteria criterias){
         ArrayList<ComicElement> orderedList = new ArrayList<>(players.size());
         if((!players.isEmpty())&&(criterias != null)){
             orderedList.add(0, players.get(0));
@@ -81,8 +64,8 @@ public class Arena{
         return orderedList;
     }
     
-    public List<ComicElement> battle(){
-        List <ComicElement> ord = sort();
+    public List<ComicElement> battle(BattleCriteria criterias){
+        List <ComicElement> ord = sort(criterias);
         List <ComicElement> winners = new ArrayList<>();
         if((!ord.isEmpty())&&(criterias != null)){
             winners.add(ord.get(0));
