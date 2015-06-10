@@ -12,17 +12,15 @@ public class GreaterBattleCriteria extends BattleCriteria{
     public GreaterBattleCriteria(String stat, BattleCriteria next) {
         super(stat, next);
     }
-        
+
     @Override
-    public ComicElement battle(ComicElement char1, ComicElement char2){
-        if(char1.getStat(stat)>char2.getStat(stat))
-            return char1;
-        if(char1.getStat(stat)<char2.getStat(stat))
-            return char2;
+    public int compare(ComicElement o1, ComicElement o2) {
+        if(o1.getStat(stat)<o2.getStat(stat))
+            return -1;
+        if(o1.getStat(stat)>o2.getStat(stat))
+            return 1;
         if (next != null)
-            return next.battle(char1, char2);
-        return null;
+            return next.compare(o1, o2);
+        return 0;
     }
-
 }
-

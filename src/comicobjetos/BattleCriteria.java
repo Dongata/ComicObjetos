@@ -1,9 +1,10 @@
 package comicobjetos;
 
 import comicobjetos.entities.ComicElement;
-import java.util.List;
+import java.util.Comparator;
 
-public abstract class BattleCriteria{
+
+public abstract class BattleCriteria implements Comparator<ComicElement>{
     protected String stat;
     protected BattleCriteria next;
 
@@ -11,7 +12,7 @@ public abstract class BattleCriteria{
         this.stat = stat;
         this.next = null;
     }
-    
+
     public BattleCriteria(String stat, BattleCriteria next) {
         this.stat = stat;
         this.next = next;
@@ -28,7 +29,5 @@ public abstract class BattleCriteria{
     public void setNext(BattleCriteria next) {
         this.next = next;
     }
-
-    public abstract ComicElement battle(ComicElement char1, ComicElement char2);
 
 }

@@ -1,6 +1,7 @@
 package comicobjetos;
 import comicobjetos.entities.ComicElement;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -32,12 +33,18 @@ public class Arena{
     
     public ComicElement battle(ComicElement ce1, ComicElement ce2, BattleCriteria criterias){
         if ((ce1 != null) && (ce2 !=null))
-            return criterias.battle(ce1, ce2);
+            if (criterias.compare(ce1, ce2) == 1)
+                return ce1;
+            else if (criterias.compare(ce1, ce2) == -1)
+                return ce2;
         return null;
     }
     
     public List<ComicElement> sort(BattleCriteria criterias){
-        ArrayList<ComicElement> orderedList = new ArrayList<>(players.size());
+        Collections.sort(players, criterias);
+        return players;
+        
+        /*ArrayList<ComicElement> orderedList = new ArrayList<>(players.size());
         if((!players.isEmpty())&&(criterias != null)){
             orderedList.add(0, players.get(0));
             ComicElement best = null;
@@ -61,16 +68,16 @@ public class Arena{
                 j = 0;
             }
         }
-        return orderedList;
+        return orderedList;*/
     }
     
-    public List<ComicElement> battle(BattleCriteria criterias){
+public List<ComicElement> battle(BattleCriteria criterias){
         List <ComicElement> ord = sort(criterias);
         List <ComicElement> winners = new ArrayList<>();
         if((!ord.isEmpty())&&(criterias != null)){
             winners.add(ord.get(0));
             for (int i=1; i<ord.size(); i++){
-                if (criterias.battle(ord.get(0), ord.get(i))==null)
+                if (criterias.compare(ord.get(0),ord.get(i)) == 0)
                     winners.add(ord.get(i));
                 else return winners;
             }
