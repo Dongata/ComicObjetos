@@ -4,8 +4,7 @@ import comicobjetos.entities.ComicElement;
 import java.util.List;
 
 
-
-public class GreaterGroupStat extends GroupStatCalculator
+public class GreaterGroupStat implements GroupStatCalculator
 {
 
     @Override

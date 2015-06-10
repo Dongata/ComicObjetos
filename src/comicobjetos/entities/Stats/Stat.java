@@ -1,5 +1,7 @@
 package comicobjetos.entities.Stats;
-public abstract class Stat
+
+
+public interface Stat
 {
     public abstract float getValue();
 }

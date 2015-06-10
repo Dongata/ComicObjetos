@@ -3,7 +3,8 @@ package comicobjetos.entities.groupstats;
 import comicobjetos.entities.ComicElement;
 import java.util.List;
 
-public class SumGroupStat extends GroupStatCalculator
+
+public class SumGroupStat implements GroupStatCalculator
 {
     @Override
     public float calculate(List<Float> elements){

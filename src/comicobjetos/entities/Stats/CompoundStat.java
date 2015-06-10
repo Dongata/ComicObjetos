@@ -1,6 +1,6 @@
 package comicobjetos.entities.Stats;
 
-public abstract class CompoundStat extends Stat
+public abstract class CompoundStat implements Stat
 {
 	protected Stat stat1;
 	protected Stat stat2;

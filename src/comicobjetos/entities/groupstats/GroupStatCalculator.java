@@ -4,7 +4,7 @@ import java.util.List;
 
 
 
-public abstract class GroupStatCalculator{
+public interface GroupStatCalculator{
     public abstract float calculate(List<Float> elements);
 
 }

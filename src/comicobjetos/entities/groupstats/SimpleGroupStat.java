@@ -3,7 +3,7 @@ package comicobjetos.entities.groupstats;
 import java.util.List;
 
 
-public class SimpleGroupStat extends GroupStatCalculator
+public class SimpleGroupStat implements GroupStatCalculator
 {
     private float value;
     

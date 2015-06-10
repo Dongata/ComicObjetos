@@ -1,7 +1,7 @@
 package comicobjetos.entities.Stats;
 
 
-public abstract class ComparisonStat extends Stat
+public abstract class ComparisonStat implements Stat
 {
     protected Stat stat1;
     protected Stat stat2;

@@ -193,8 +193,6 @@ public class ComicObjetos {
         arenaOrdenada2 = arena.sort();
         mejores2 = arena.battle();
              
-        System.out.println("Lista desordenada:");
-        imprimir(arena.getPlayers());
         System.out.println("Lista ordenada por velocidad descendente:");
         imprimir(arenaOrdenada1);
         System.out.println("Lista ordenada por maldad descendente / fuerza ascendente:");
@@ -218,6 +216,24 @@ public class ComicObjetos {
         
         
     }
+    
+        /*
+        run:
+        flash
+        duo dinamico
+        liga injusticia
+        Lista desordenada:
+        flash - capitan frio - superman - batman - robin - guason - lex luthor - gatubela - duo dinamico - liga justicia - liga injusticia - 
+        Lista ordenada por velocidad descendente:
+        flash - superman - gatubela - lex luthor - guason - robin - liga injusticia - capitan frio - liga justicia - duo dinamico - batman - 
+        Lista ordenada por maldad descendente / fuerza ascendente:
+        liga injusticia - guason - lex luthor - capitan frio - gatubela - robin - flash - batman - duo dinamico - liga justicia - superman - 
+        Mejores: 
+        flash - 
+        liga injusticia - 
+        liga injusticia - liga justicia - duo dinamico - gatubela - guason - batman - 
+        liga justicia - duo dinamico - batman - 
+        */
     
     public static void imprimir(List<ComicElement> lista){
         if(!lista.isEmpty()){

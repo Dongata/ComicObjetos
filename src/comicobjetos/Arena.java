@@ -37,10 +37,6 @@ public class Arena{
         players.add(player);
     }
     
-    public List<ComicElement> getPlayers(){
-        return players;
-    }
-    
     public ComicElement getComicElement(String name){
         for (ComicElement ce: players){
             if (ce.getAlias().equals(name))
