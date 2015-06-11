@@ -4,7 +4,7 @@ import comicobjetos.entities.ComicElement;
 
 
 public class GreaterBattleCriteria extends BattleCriteria{
-    
+
     public GreaterBattleCriteria(String stat) {
         super(stat);
     }
